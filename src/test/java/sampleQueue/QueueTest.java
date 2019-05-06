@@ -42,12 +42,68 @@ class QueueTest {
 
 	//Example of Wrong Test! 
 	@Test
-	@Disabled
 	@DisplayName("Verify Queue isEmpty returns false when queue is not empty")
 	void isEmptyShouldGiveFalseWhenQueueIsNotEmpty() {
-		this.q.enqueue(SOME_ITEM);
-		assertFalse(q.isEmpty());
+		this.q.enqueue("hi");
+		assertTrue(q.isEmpty());
 	}
+	
+	@Test
+	@DisplayName("test to add elements")
+	public void enqueue() {
 
+		q.enqueue("hi");
+		
+		//Object i = q.dequeue();
+		assertEquals("hi ",q.toString());
+	}
+	
+	@Test
+	@DisplayName("test to remove an element")
+	public void dequeue() {
+		
+		q.enqueue("hi");
+		q.enqueue("hey");
+		Object i = q.dequeue();
+		assertEquals("hey ",q.toString());
+	
+	}
+	@Test
+	@DisplayName("test for peek")
+	public void Peek() {
+	
+
+        q.enqueue("hi");
+        assertEquals(q.peek(), "hi");
+
+	}
+	
+	@Test
+	@DisplayName("test for checking length")
+	public void length() {
+		
+		q.enqueue("hi");
+		q.enqueue("TA");
+		assertTrue(q.size() == 2);
+	}
+	
+	@Test
+	@DisplayName("test it is empty")
+	public void Empty() {
+		q.enqueue("hey");
+		q.enqueue("man");
+		Object i = q.dequeue();
+		Object j = q.dequeue();
+		assertTrue(q.isEmpty());
+	}
+	
+	@Test
+	@DisplayName("test to remove all elements")
+	public void removeall() {
+		q.enqueue("hey");
+		q.enqueue("man");
+		q.removeAll();
+		assertTrue(q.isEmpty());
+	}
 	
 }
